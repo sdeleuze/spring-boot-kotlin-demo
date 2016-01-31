@@ -1,0 +1,43 @@
+buildscript {
+	ext {
+		springBootVersion = '1.3.2.RELEASE'
+		kotlinVersion = '1.0.0-beta-4589'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+	}
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'spring-boot-kotlin-demo'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	compile("com.h2database:h2")
+	compile("org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}")
+	//compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.6.5")
+	testCompile('org.springframework.boot:spring-boot-starter-test') 
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.9'
+}
