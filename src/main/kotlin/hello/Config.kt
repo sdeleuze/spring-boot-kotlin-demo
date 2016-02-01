@@ -11,7 +11,7 @@ open class Config {
     private val log = LoggerFactory.getLogger(Config::class.java)
 
     @Bean
-    open fun demo(repository: CustomerRepository):CommandLineRunner {
+    open fun init(repository: CustomerRepository):CommandLineRunner {
         return CommandLineRunner {
             // save a couple of customers
             repository.save(Customer("Jack", "Bauer"))
