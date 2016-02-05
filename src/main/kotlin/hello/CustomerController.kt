@@ -11,8 +11,7 @@ class CustomerController @Autowired constructor(val repository:CustomerRepositor
 	@RequestMapping("/")
 	fun findAll() = repository.findAll()
 
-
 	@RequestMapping("/{lastName}")
-	fun findByLastName(@PathVariable lastName:String) = repository.findByLastName(lastName)
-
+	fun findByLastName(@PathVariable lastName:String)
+			= repository.findByLastName(lastName)
 }
