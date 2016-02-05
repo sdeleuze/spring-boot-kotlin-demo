@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class CustomerController @Autowired constructor(val repository:CustomerRepository) {
 
-    @RequestMapping("/")
-    fun list(): Iterable<Customer> {
-        return repository.findAll()
-    }
+	@RequestMapping("/")
+	fun list(): Iterable<Customer> {
+		return repository.findAll()
+	}
 
 }
