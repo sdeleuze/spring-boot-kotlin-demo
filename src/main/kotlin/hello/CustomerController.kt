@@ -9,13 +9,10 @@ import org.springframework.web.bind.annotation.RestController
 class CustomerController @Autowired constructor(val repository:CustomerRepository) {
 
 	@RequestMapping("/")
-	fun findAll(): Iterable<Customer> {
-		return repository.findAll()
-	}
+	fun findAll() = repository.findAll()
+
 
 	@RequestMapping("/{lastName}")
-	fun findByLastName(@PathVariable lastName:String): Iterable<Customer> {
-		return repository.findByLastName(lastName)
-	}
+	fun findByLastName(@PathVariable lastName:String) = repository.findByLastName(lastName)
 
 }
