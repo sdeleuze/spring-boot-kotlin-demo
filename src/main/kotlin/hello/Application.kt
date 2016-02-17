@@ -12,8 +12,7 @@ open class Application {
 	private val log = LoggerFactory.getLogger(Application::class.java)
 
 	@Bean
-	open fun init(repository: CustomerRepository): CommandLineRunner {
-		return CommandLineRunner {
+	open fun init(repository: CustomerRepository) = CommandLineRunner {
 			// save a couple of customers
 			repository.save(Customer("Jack", "Bauer"))
 			repository.save(Customer("Chloe", "O'Brian"))
@@ -43,8 +42,8 @@ open class Application {
 				log.info(bauer.toString())
 			}
 			log.info("")
-		}
 	}
+
 }
 
 fun main(args: Array<String>) {
