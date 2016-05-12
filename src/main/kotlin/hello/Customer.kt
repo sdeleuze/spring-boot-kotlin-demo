@@ -6,7 +6,7 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class Customer(
+class Customer(
 		var firstName: String = "",
 		var lastName: String = "",
 		@Id @GeneratedValue(strategy = GenerationType.AUTO)
