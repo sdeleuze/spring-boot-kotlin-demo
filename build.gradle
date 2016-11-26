@@ -1,7 +1,7 @@
 buildscript {
 	ext {
-		springBootVersion = '1.3.5.RELEASE'
-		kotlinVersion = '1.0.2'
+		springBootVersion = '1.4.2.RELEASE'
+		kotlinVersion = '1.0.5-2'
 	}
 	repositories {
 		mavenCentral()
@@ -13,9 +13,7 @@ buildscript {
 }
 
 apply plugin: 'kotlin'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
 
 jar {
 	baseName = 'spring-boot-kotlin-demo'
@@ -34,10 +32,7 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-data-jpa")
 	compile("com.h2database:h2")
 	compile("org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}")
-	compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.6.6")
+	compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.8.4")
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
 }
 
-task wrapper(type: Wrapper) {
-	gradleVersion = '2.13'
-}
