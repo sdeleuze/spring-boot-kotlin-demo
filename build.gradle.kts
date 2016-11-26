@@ -31,7 +31,6 @@ repositories {
 
 val kotlinVersion = extra["kotlinVersion"] as String
 
-
 dependencies {
 	compile("org.springframework.boot:spring-boot-starter-web")
 	compile("org.springframework.boot:spring-boot-starter-data-jpa")
