@@ -10,5 +10,9 @@ class Customer(
 		var firstName: String = "",
 		var lastName: String = "",
 		@Id @GeneratedValue(strategy = GenerationType.AUTO)
-		var id: Long = 0
-)
+		var id: Long = 0) {
+
+	override fun toString(): String {
+		return "Customer(id=$id, firstName='$firstName', lastName='$lastName')"
+	}
+}

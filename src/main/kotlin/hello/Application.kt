@@ -14,10 +14,6 @@ open class Application {
 	private val log = LoggerFactory.getLogger(Application::class.java)
 
 	@Bean
-	open fun objectMapperBuilder()
-		= Jackson2ObjectMapperBuilder().modulesToInstall(KotlinModule())
-
-	@Bean
 	open fun init(repository: CustomerRepository) = CommandLineRunner {
 			// save a couple of customers
 			repository.save(Customer("Jack", "Bauer"))
