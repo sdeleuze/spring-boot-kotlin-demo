@@ -7,10 +7,10 @@ import javax.persistence.Id
 
 @Entity
 class Customer(
-		var firstName: String = "",
-		var lastName: String = "",
+		val firstName: String,
+		val lastName: String,
 		@Id @GeneratedValue(strategy = GenerationType.AUTO)
-		var id: Long = 0) {
+		val id: Long = -1) {
 
 	override fun toString(): String {
 		return "Customer(id=$id, firstName='$firstName', lastName='$lastName')"

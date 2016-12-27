@@ -1,15 +1,15 @@
 buildscript {
-	val springBootVersion = "1.4.2.RELEASE"
-	val kotlinVersion = "1.1-M04"
+	val springBootVersion = "1.4.3.RELEASE"
+	val kotlinVersion = "1.0.6"
 	extra["kotlinVersion"] = kotlinVersion
 
 	repositories {
 		mavenCentral()
-		maven{ setUrl("https://dl.bintray.com/kotlin/kotlin-eap-1.1") }
 	}
 
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+		classpath("org.jetbrains.kotlin:kotlin-noarg:$kotlinVersion")
 		classpath("org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion")
 		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
 	}
@@ -18,6 +18,7 @@ buildscript {
 apply {
 	plugin("kotlin")
 	plugin("kotlin-spring")
+	plugin("kotlin-jpa")
 	plugin("org.springframework.boot")
 }
 
@@ -30,7 +31,6 @@ configure<JavaPluginConvention> {
 
 repositories {
 	mavenCentral()
-	maven{ setUrl("https://dl.bintray.com/kotlin/kotlin-eap-1.1") }
 }
 
 val kotlinVersion = extra["kotlinVersion"] as String
