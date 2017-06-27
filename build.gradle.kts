@@ -1,7 +1,6 @@
 buildscript {
-	val springBootVersion = "1.4.3.RELEASE"
-	val kotlinVersion = "1.0.6"
-	extra["kotlinVersion"] = kotlinVersion
+	val springBootVersion = "1.5.4.RELEASE"
+	val kotlinVersion = "1.1.3"
 
 	repositories {
 		mavenCentral()
@@ -33,15 +32,13 @@ repositories {
 	mavenCentral()
 }
 
-val kotlinVersion = extra["kotlinVersion"] as String
-
 dependencies {
 	compile("org.springframework.boot:spring-boot-starter-web")
 	compile("org.springframework.boot:spring-boot-starter-data-jpa")
 	compile("com.h2database:h2")
-	compile("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-	compile("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
-	compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.8.4")
+	compile("org.jetbrains.kotlin:kotlin-stdlib")
+	compile("org.jetbrains.kotlin:kotlin-reflect")
+	compile("com.fasterxml.jackson.module:jackson-module-kotlin")
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
