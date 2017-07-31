@@ -15,10 +15,13 @@ buildscript {
 }
 
 apply {
-	plugin("kotlin")
-	plugin("kotlin-spring")
-	plugin("kotlin-jpa")
+	plugin("java")
+	plugin("eclipse")
+	plugin("idea")
 	plugin("org.springframework.boot")
+	plugin("kotlin")
+	plugin("kotlin-jpa")
+	plugin("kotlin-spring")
 }
 
 version = "0.0.1-SNAPSHOT"
@@ -39,6 +42,8 @@ dependencies {
 	compile("org.jetbrains.kotlin:kotlin-stdlib")
 	compile("org.jetbrains.kotlin:kotlin-reflect")
 	compile("com.fasterxml.jackson.module:jackson-module-kotlin")
+	//compile("com.fasterxml.jackson.module:jackson-module")
+	compile("org.springframework.boot:spring-boot-starter-actuator")
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 

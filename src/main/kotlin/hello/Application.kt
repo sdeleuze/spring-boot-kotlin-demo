@@ -4,7 +4,9 @@ import org.slf4j.LoggerFactory
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
+import java.util.*
 
 @SpringBootApplication
 class Application {
@@ -12,15 +14,18 @@ class Application {
 	private val log = LoggerFactory.getLogger(Application::class.java)
 
 	@Bean
-	fun init(repository: CustomerRepository) = CommandLineRunner {
+	fun init(repository: CustomerRepository, personRepository: PersonRepository) = CommandLineRunner {
 			// save a couple of customers
 			repository.save(Customer("Jack", "Bauer"))
 			repository.save(Customer("Chloe", "O'Brian"))
 			repository.save(Customer("Kim", "Bauer"))
 			repository.save(Customer("David", "Palmer"))
 			repository.save(Customer("Michelle", "Dessler"))
+		    personRepository.save(Person("hari"))
+		    personRepository.save(Person("subha"))
 
-			// fetch all customers
+
+		// fetch all customers
 			log.info("Customers found with findAll():")
 			log.info("-------------------------------")
 			for (customer in repository.findAll()) {
@@ -43,6 +48,20 @@ class Application {
 			}
 			log.info("")
 	}
+
+    @Bean
+    fun commandLineRunner(ctx: ApplicationContext): CommandLineRunner {
+        return CommandLineRunner {
+            println("Let's inspect the beans provided by Spring Boot:")
+
+            val beanNames = ctx.beanDefinitionNames
+            Arrays.sort(beanNames)
+            for (beanName in beanNames) {
+                println(beanName)
+            }
+        }
+    }
+
 
 }
 
