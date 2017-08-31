@@ -1,17 +1,15 @@
 buildscript {
-	val springBootVersion = "1.5.4.RELEASE"
-	val kotlinVersion = "1.1.3"
-
 	repositories {
 		mavenCentral()
 	}
+}
 
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
-		classpath("org.jetbrains.kotlin:kotlin-noarg:$kotlinVersion")
-		classpath("org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion")
-		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-	}
+plugins {
+	val kotlinVersion = "1.1.4-3"
+	id("org.jetbrains.kotlin.jvm") version kotlinVersion
+	id("org.jetbrains.kotlin.plugin.spring") version kotlinVersion
+	id("org.jetbrains.kotlin.plugin.noarg") version kotlinVersion
+	id ("org.springframework.boot") version "1.5.6.RELEASE"
 }
 
 apply {
