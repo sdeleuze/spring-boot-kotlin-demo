@@ -1,6 +1,14 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 buildscript {
 	repositories {
 		mavenCentral()
+		maven("https://repo.spring.io/milestone")
+		maven("https://repo.spring.io/snapshot")
+	}
+
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.M4")
 	}
 }
 
@@ -9,7 +17,7 @@ plugins {
 	id("org.jetbrains.kotlin.jvm") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.spring") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.noarg") version kotlinVersion
-	id ("org.springframework.boot") version "1.5.6.RELEASE"
+	id("io.spring.dependency-management") version "1.0.3.RELEASE"
 }
 
 apply {
@@ -19,15 +27,21 @@ apply {
 	plugin("org.springframework.boot")
 }
 
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0-SNAPSHOT"
 
-configure<JavaPluginConvention> {
-	setSourceCompatibility(1.8)
-	setTargetCompatibility(1.8)
+tasks {
+	withType<KotlinCompile> {
+		kotlinOptions {
+			jvmTarget = "1.8"
+			freeCompilerArgs = listOf("-Xjsr305-annotations=enable")
+		}
+	}
 }
 
 repositories {
 	mavenCentral()
+	maven("https://repo.spring.io/milestone")
+	maven("https://repo.spring.io/snapshot")
 }
 
 dependencies {
