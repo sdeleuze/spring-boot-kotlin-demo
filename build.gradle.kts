@@ -13,7 +13,7 @@ buildscript {
 }
 
 plugins {
-	val kotlinVersion = "1.1.4-3"
+	val kotlinVersion = "1.1.50"
 	id("org.jetbrains.kotlin.jvm") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.spring") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.noarg") version kotlinVersion
@@ -33,7 +33,7 @@ tasks {
 	withType<KotlinCompile> {
 		kotlinOptions {
 			jvmTarget = "1.8"
-			freeCompilerArgs = listOf("-Xjsr305-annotations=enable")
+			freeCompilerArgs = listOf("-Xjsr305=strict")
 		}
 	}
 }
