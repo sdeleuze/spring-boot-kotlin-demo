@@ -8,12 +8,12 @@ buildscript {
 	}
 
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.M4")
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.BUILD-SNAPSHOT")
 	}
 }
 
 plugins {
-	val kotlinVersion = "1.1.50"
+	val kotlinVersion = "1.1.51"
 	id("org.jetbrains.kotlin.jvm") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.spring") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.noarg") version kotlinVersion
