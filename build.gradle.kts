@@ -1,6 +1,6 @@
 buildscript {
-	val springBootVersion = "1.5.4.RELEASE"
-	val kotlinVersion = "1.1.3"
+	val springBootVersion = "1.5.7.RELEASE"
+	val kotlinVersion = "1.1.51"
 
 	repositories {
 		mavenCentral()
