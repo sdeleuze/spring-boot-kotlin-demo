@@ -4,11 +4,10 @@ buildscript {
 	repositories {
 		mavenCentral()
 		maven("https://repo.spring.io/milestone")
-		maven("https://repo.spring.io/snapshot")
 	}
 
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.BUILD-SNAPSHOT")
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.M5")
 	}
 }
 
@@ -16,14 +15,11 @@ plugins {
 	val kotlinVersion = "1.1.51"
 	id("org.jetbrains.kotlin.jvm") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.spring") version kotlinVersion
-	id("org.jetbrains.kotlin.plugin.noarg") version kotlinVersion
+	id("org.jetbrains.kotlin.plugin.jpa") version kotlinVersion
 	id("io.spring.dependency-management") version "1.0.3.RELEASE"
 }
 
 apply {
-	plugin("kotlin")
-	plugin("kotlin-spring")
-	plugin("kotlin-jpa")
 	plugin("org.springframework.boot")
 }
 
@@ -40,8 +36,7 @@ tasks {
 
 repositories {
 	mavenCentral()
-	maven("https://repo.spring.io/milestone")
-	maven("https://repo.spring.io/snapshot")
+	maven("http://repo.spring.io/milestone")
 }
 
 dependencies {
