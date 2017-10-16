@@ -1,12 +1,27 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+buildscript {
+	repositories {
+		mavenCentral()
+		maven("https://repo.spring.io/milestone")
+	}
+
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.M5")
+		classpath("org.junit.platform:junit-platform-gradle-plugin:1.0.1")
+	}
+}
+
+apply {
+	plugin("org.springframework.boot")
+	plugin("org.junit.platform.gradle.plugin")
+}
+
 plugins {
 	val kotlinVersion = "1.1.51"
 	id("org.jetbrains.kotlin.jvm") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.spring") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.jpa") version kotlinVersion
-	id("org.springframework.boot") version "2.0.0.M5"
-	id("org.junit.platform.gradle.plugin") version "1.0.1"
 	id("io.spring.dependency-management") version "1.0.3.RELEASE"
 }
 
