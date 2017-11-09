@@ -11,4 +11,3 @@ data class Customer(
 		val lastName: String,
 		@Id @GeneratedValue
 		val id: Long = -1)
-

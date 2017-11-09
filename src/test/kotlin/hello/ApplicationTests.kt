@@ -14,8 +14,8 @@ import org.springframework.web.client.getForObject
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ApplicationTests(@LocalServerPort port: Int, @Autowired builder: RestTemplateBuilder) {
 
-    // We don't use TestRestTemplate because of Spring Boot issues #10761 and #8062
-    private val restTemplate = builder.rootUri("http://localhost:$port").build()
+	// We don't use TestRestTemplate because of Spring Boot issues #10761 and #8062
+	private val restTemplate = builder.rootUri("http://localhost:$port").build()
 
 	@Test
 	fun findAll() {
