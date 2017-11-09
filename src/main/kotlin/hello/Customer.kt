@@ -9,5 +9,6 @@ import javax.persistence.Id
 data class Customer(
 		val firstName: String,
 		val lastName: String,
-		@Id @GeneratedValue(strategy = GenerationType.AUTO)
+		@Id @GeneratedValue
 		val id: Long = -1)
+
