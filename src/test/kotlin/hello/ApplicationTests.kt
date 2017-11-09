@@ -5,20 +5,22 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.web.client.TestRestTemplate
+import org.springframework.boot.web.client.RestTemplateBuilder
+import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.test.context.junit.jupiter.SpringExtension
+import org.springframework.web.client.getForObject
 
 @ExtendWith(SpringExtension::class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ApplicationTests {
+class ApplicationTests(@LocalServerPort port: Int, @Autowired builder: RestTemplateBuilder) {
 
-	@Autowired
-	lateinit var restTemplate: TestRestTemplate
+    // We don't use TestRestTemplate because of Spring Boot issues #10761 and #8062
+    private val restTemplate = builder.rootUri("http://localhost:$port").build()
 
 	@Test
 	fun findAll() {
 		val content = """[{"firstName":"Jack","lastName":"Bauer","id":1},{"firstName":"Chloe","lastName":"O'Brian","id":2},{"firstName":"Kim","lastName":"Bauer","id":3},{"firstName":"David","lastName":"Palmer","id":4},{"firstName":"Michelle","lastName":"Dessler","id":5}]"""
-		assertEquals(content, restTemplate.getForEntity("/", String::class.java).body) // See https://github.com/spring-projects/spring-boot/issues/8062
+		assertEquals(content, restTemplate.getForObject<String>("/"))
 	}
 
 }
