@@ -5,17 +5,14 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.web.client.RestTemplateBuilder
-import org.springframework.boot.web.server.LocalServerPort
+import org.springframework.boot.test.context.SpringBootTest.*
+import org.springframework.boot.test.web.client.TestRestTemplate
+import org.springframework.boot.test.web.client.getForObject
 import org.springframework.test.context.junit.jupiter.SpringExtension
-import org.springframework.web.client.getForObject
 
 @ExtendWith(SpringExtension::class)
-@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ApplicationTests(@LocalServerPort port: Int, @Autowired builder: RestTemplateBuilder) {
-
-	// We don't use TestRestTemplate because of Spring Boot issues #10761 and #8062
-	private val restTemplate = builder.rootUri("http://localhost:$port").build()
+@SpringBootTest(webEnvironment= WebEnvironment.RANDOM_PORT)
+class ApplicationTests(@Autowired private val restTemplate: TestRestTemplate) {
 
 	@Test
 	fun findAll() {

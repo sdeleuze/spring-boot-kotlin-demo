@@ -7,8 +7,8 @@ buildscript {
 	}
 
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.M6")
-		classpath("org.junit.platform:junit-platform-gradle-plugin:1.0.1")
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.M7")
+		classpath("org.junit.platform:junit-platform-gradle-plugin:1.0.2")
 	}
 }
 
@@ -18,7 +18,7 @@ apply {
 }
 
 plugins {
-	val kotlinVersion = "1.1.60"
+	val kotlinVersion = "1.1.61"
 	id("org.jetbrains.kotlin.jvm") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.spring") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.jpa") version kotlinVersion
@@ -47,6 +47,7 @@ dependencies {
 	compile("com.h2database:h2")
 	compile("org.jetbrains.kotlin:kotlin-stdlib")
 	compile("org.jetbrains.kotlin:kotlin-reflect")
+	compile("com.fasterxml.jackson.module:jackson-module-kotlin")
 	testCompile("org.springframework.boot:spring-boot-starter-test") {
 		exclude(module = "junit")
 	}
