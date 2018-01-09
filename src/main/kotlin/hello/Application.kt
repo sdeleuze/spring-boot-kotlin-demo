@@ -29,7 +29,7 @@ class Application {
 			// fetch an individual customer by ID
 			val customer = repository.findById(1L)
 			customer.ifPresent {
-				log.info("Customer found with findOne(1L):")
+				log.info("Customer found with findById(1L):")
 				log.info("--------------------------------")
 				log.info(it.toString())
 				log.info("")
