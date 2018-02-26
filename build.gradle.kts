@@ -8,7 +8,7 @@ buildscript {
 
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RC2")
-		classpath("org.junit.platform:junit-platform-gradle-plugin:1.0.2")
+		classpath("org.junit.platform:junit-platform-gradle-plugin:1.0.3")
 	}
 }
 
