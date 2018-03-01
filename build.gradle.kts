@@ -1,24 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-buildscript {
-	repositories {
-		mavenCentral()
-		maven("https://repo.spring.io/milestone")
-	}
-
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RC2")
-		classpath("org.junit.platform:junit-platform-gradle-plugin:1.0.3")
-	}
-}
-
-apply {
-	plugin("org.springframework.boot")
-	plugin("org.junit.platform.gradle.plugin")
-}
-
 plugins {
 	val kotlinVersion = "1.2.21"
+	id("org.springframework.boot") version "2.0.0.RELEASE"
 	id("org.jetbrains.kotlin.jvm") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.spring") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.jpa") version kotlinVersion
@@ -34,11 +18,15 @@ tasks {
 			freeCompilerArgs = listOf("-Xjsr305=strict")
 		}
 	}
+
+	// TODO To be replaced by test { } support when available in Gradle Kotlin DSL
+	withType<Test> {
+		useJUnitPlatform()
+	}
 }
 
 repositories {
 	mavenCentral()
-	maven("http://repo.spring.io/milestone")
 }
 
 dependencies {
@@ -51,7 +39,7 @@ dependencies {
 	testCompile("org.springframework.boot:spring-boot-starter-test") {
 		exclude(module = "junit")
 	}
-	testCompile("org.junit.jupiter:junit-jupiter-api")
-	testRuntime("org.junit.jupiter:junit-jupiter-engine")
+	testImplementation("org.junit.jupiter:junit-jupiter-api")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
