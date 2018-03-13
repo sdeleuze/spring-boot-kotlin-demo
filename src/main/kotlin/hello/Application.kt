@@ -1,15 +1,25 @@
 package hello
 
+import io.micrometer.core.instrument.binder.jpa.HibernateMetrics
 import org.slf4j.LoggerFactory
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
+import javax.persistence.EntityManagerFactory
 
 @SpringBootApplication
 class Application {
 
 	private val log = LoggerFactory.getLogger(Application::class.java)
+
+
+    /*
+    @Bean
+    fun hibernateMetrics(em:EntityManagerFactory): HibernateMetrics {
+        return HibernateMetrics(em, "entityManagerFactory", listOf());
+    }
+    */
 
 	@Bean
 	fun init(repository: CustomerRepository) = CommandLineRunner {
