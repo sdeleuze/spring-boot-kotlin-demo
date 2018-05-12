@@ -1,6 +1,8 @@
 # Spring Boot Kotlin sample project
 
-This is the source code for the a sample Spring Boot application developed with Kotlin and Spring Data JPA. 
+This is the source code for the a sample Spring Boot application developed with Kotlin and Spring Data JPA.
+
+**See also https://github.com/spring-guides/tut-spring-boot-kotlin for a more complete Spring Boot + Kotlin + JPA example.**
 
 You can launch the application with by running:
 
