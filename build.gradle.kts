@@ -1,12 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	val kotlinVersion = "1.2.41"
-	id("org.springframework.boot") version "2.0.2.RELEASE"
+	val kotlinVersion = "1.3.21"
+	id("org.springframework.boot") version "2.1.2.RELEASE"
 	id("org.jetbrains.kotlin.jvm") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.spring") version kotlinVersion
 	id("org.jetbrains.kotlin.plugin.jpa") version kotlinVersion
-	id("io.spring.dependency-management") version "1.0.5.RELEASE"
+	id("io.spring.dependency-management") version "1.0.6.RELEASE"
 }
 
 version = "1.0.0-SNAPSHOT"
