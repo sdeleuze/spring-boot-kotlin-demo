@@ -1,42 +1,40 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	val kotlinVersion = "1.3.21"
-	id("org.springframework.boot") version "2.1.2.RELEASE"
-	id("org.jetbrains.kotlin.jvm") version kotlinVersion
-	id("org.jetbrains.kotlin.plugin.spring") version kotlinVersion
-	id("org.jetbrains.kotlin.plugin.jpa") version kotlinVersion
-	id("io.spring.dependency-management") version "1.0.6.RELEASE"
+	val kotlinVersion = "1.8.0"
+	id("org.springframework.boot") version "3.0.1"
+	id("io.spring.dependency-management") version "1.1.0"
+	kotlin("jvm") version kotlinVersion
+	kotlin("plugin.spring") version kotlinVersion
+	kotlin("plugin.jpa") version kotlinVersion
 }
 
+group = "hello"
 version = "1.0.0-SNAPSHOT"
-
-tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		jvmTarget = "1.8"
-		freeCompilerArgs = listOf("-Xjsr305=strict")
-	}
-}
-
-tasks.withType<Test> {
-	useJUnitPlatform()
-}
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	compile("org.springframework.boot:spring-boot-starter-web")
-	compile("org.springframework.boot:spring-boot-starter-data-jpa")
-	compile("com.h2database:h2")
-	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	compile("org.jetbrains.kotlin:kotlin-reflect")
-	compile("com.fasterxml.jackson.module:jackson-module-kotlin")
-	testCompile("org.springframework.boot:spring-boot-starter-test") {
-		exclude(module = "junit")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("com.h2database:h2")
+
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+tasks.withType<KotlinCompile> {
+	kotlinOptions {
+		jvmTarget = "17"
+		freeCompilerArgs = listOf("-Xjsr305=strict")
 	}
-	testImplementation("org.junit.jupiter:junit-jupiter-api")
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+}
+
+tasks.withType<Test> {
+	useJUnitPlatform()
 }
 

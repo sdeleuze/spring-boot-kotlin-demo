@@ -44,6 +44,6 @@ class Application {
 
 }
 
-fun main(args: Array<String>) {
-	runApplication<Application>(*args)
+fun main() {
+	runApplication<Application>()
 }
