@@ -1,12 +1,11 @@
 package hello
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.Id
+import org.springframework.data.annotation.Id
+import org.springframework.data.relational.core.mapping.Table
 
-@Entity
-class Customer(
-		var firstName: String,
-		var lastName: String,
-		@Id @GeneratedValue
-		var id: Long = -1)
+@Table
+data class Customer(
+		val firstName: String,
+		val lastName: String,
+		@Id
+		val id: Long? = null)
