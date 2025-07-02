@@ -1,9 +1,7 @@
-import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
-
 plugins {
-	val kotlinVersion = "2.0.0"
-	id("org.springframework.boot") version "3.3.1"
-	id("io.spring.dependency-management") version "1.1.5"
+	val kotlinVersion = "2.2.0"
+	id("org.springframework.boot") version "3.5.3"
+	id("io.spring.dependency-management") version "1.1.7"
 	kotlin("jvm") version kotlinVersion
 	kotlin("plugin.spring") version kotlinVersion
 }
@@ -35,12 +33,6 @@ kotlin {
 	compilerOptions {
 		freeCompilerArgs.addAll("-Xjsr305=strict")
 	}
-}
-
-tasks.named<BootBuildImage>("bootBuildImage") {
-	// For multi arch (Apple Silicon) support
-	builder.set("paketobuildpacks/builder-jammy-buildpackless-tiny")
-	buildpacks.set(listOf("paketobuildpacks/java"))
 }
 
 tasks.withType<Test> {
